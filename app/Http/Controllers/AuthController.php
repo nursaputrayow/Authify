@@ -139,4 +139,9 @@ class AuthController extends Controller
             return $this->errorResponse('An error occurred during password reset.', 500, ['error' => $e->getMessage()]);
         }
     }
+
+    public function profile(Request $request)
+    {
+        return $this->successResponse(['user' => $request->user()], 'User profile');
+    }
 }
