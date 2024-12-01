@@ -71,4 +71,10 @@ class AuthService
 
         return true;
     }
+
+    public function updateProfile(User $user, array $data)
+    {
+        $user->update($data);
+        return $user;
+    }
 }

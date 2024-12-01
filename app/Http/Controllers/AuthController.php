@@ -144,4 +144,22 @@ class AuthController extends Controller
     {
         return $this->successResponse(['user' => $request->user()], 'User profile');
     }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        try {
+            $user = $this->authService->updateProfile($request->user(), $request->only('name'));
+
+            return $this->successResponse([
+                'message' => 'Profile updated successfully',
+                'user' => $user
+            ]);
+        } catch (\Exception $e) {
+            return $this->errorResponse('An error occurred while updating profile.', 500, ['error' => $e->getMessage()]);
+        }
+    }
 }
