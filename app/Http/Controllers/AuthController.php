@@ -51,4 +51,28 @@ class AuthController extends Controller
             return $this->errorResponse('Registration failed', 500, ['error' => $e->getMessage()]);
         }
     }
+
+    public function verify(VerifyRequest $request)
+    {
+        $user = User::where('phone', $request->phone)->first();
+        if (!$user) {
+            return $this->errorResponse('User not found', 404);
+        }
+
+        if (!$this->authService->verifyCode($user, $request->code)) {
+            return $this->errorResponse('Invalid or expired verification code', 422);
+        }
+
+        $user->update([
+            'is_verified' => true, 
+            'phone_verified_at' => now(),
+            'email_verified_at' => now(),
+        ]);
+        $token = $this->authService->createUserToken($user);
+
+        return $this->successResponse([
+            'user' => $user,
+            'token' => $token
+        ], 'Phone number verified successfully');
+    }
 }

@@ -40,4 +40,20 @@ class AuthService
     {
         return $this->otpService->sendVerificationCode($user);
     }
+
+    public function verifyCode(User $user, $inputCode)
+    {
+        try {
+            $isValid = $this->validateOtp($user, $inputCode);
+
+            if ($isValid) {
+                Cache::forget("otp_attempts_{$user->id}");
+            }
+
+            return true;
+        } catch (ValidationException $e) {
+            Log::warning('Invalid OTP for user: ' . $user->id);
+            throw ValidationException::withMessages(['otp' => 'Kode verifikasi tidak valid atau telah kadaluarsa.']);
+        }
+    }
 }
