@@ -75,4 +75,27 @@ class AuthController extends Controller
             'token' => $token
         ], 'Phone number verified successfully');
     }
+
+    public function login(LoginRequest $request)
+    {
+        try {
+            if (!Auth::attempt($request->only('phone', 'password'))) {
+                return $this->errorResponse('Invalid login credentials', 401);
+            }
+
+            $user = Auth::user();
+            if (!$user->is_verified) {
+                return $this->errorResponse('Please verify your phone number first', 403);
+            }
+
+            $token = $this->authService->createUserToken($user);
+
+            return $this->successResponse([
+                'user' => $user,
+                'token' => $token
+            ], 'Login successful');
+        } catch (\Exception $e) {
+            return $this->errorResponse('An error occurred during login', 500, ['error' => $e->getMessage()]);
+        }
+    }
 }
