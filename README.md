@@ -85,7 +85,7 @@ This project includes authentication routes under the `/v1` API version for user
   ```
 
 - **Command to Switch Database Configuration (MySQL or SQLite)**
-  ```json
+  ```bash
   php artisan db:switch sqlite
   php artisan db:switch mysql
 
