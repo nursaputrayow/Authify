@@ -9,6 +9,8 @@ Route::prefix('v1')->group(function () {
     Route::middleware('throttle:5,1')->group(function () {
         Route::post('/login', [AuthController::class, 'login']);
         Route::post('/verify', [AuthController::class, 'verify']);
+        Route::post('/set-new-password', [AuthController::class, 'setNewPassword']);
+        Route::post('/reset-password', [AuthController::class, 'resetPassword']);
     });
 
     Route::middleware('auth:sanctum')->group(function () {

@@ -56,4 +56,19 @@ class AuthService
             throw ValidationException::withMessages(['otp' => 'Kode verifikasi tidak valid atau telah kadaluarsa.']);
         }
     }
+
+    public function resetPassword(User $user)
+    {
+        return $this->sendVerificationCode($user);
+    }
+
+    public function setNewPassword(User $user, $code, $newPassword)
+    {
+        $this->verifyCode($user, $code);
+
+        $user->password = Hash::make($newPassword);
+        $user->save();
+
+        return true;
+    }
 }

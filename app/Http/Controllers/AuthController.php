@@ -108,4 +108,35 @@ class AuthController extends Controller
             return $this->errorResponse('An error occurred during logout.', 500, ['error' => $e->getMessage()]);
         }
     }
+
+    public function resetPassword(ResetPasswordRequest $request)
+    {
+        try {
+            $user = User::where('phone', $request->phone)->firstOrFail();
+
+            $code = $this->authService->resetPassword($user);
+
+            return $this->successResponse([
+                'message' => 'Password reset verification code sent',
+                'verification_code' => $code
+            ]);
+        } catch (\Exception $e) {
+            return $this->errorResponse('An error occurred during password reset.', 500, ['error' => $e->getMessage()]);
+        }
+    }
+
+    public function setNewPassword(SetNewPasswordRequest $request)
+    {
+        try {
+            $user = User::where('phone', $request->phone)->firstOrFail();
+
+            if (!$this->authService->setNewPassword($user, $request->code, $request->password)) {
+                return $this->errorResponse('Invalid or expired verification code', 422);
+            }
+
+            return $this->successResponse(null, 'Password reset successfully');
+        } catch (\Exception $e) {
+            return $this->errorResponse('An error occurred during password reset.', 500, ['error' => $e->getMessage()]);
+        }
+    }
 }
