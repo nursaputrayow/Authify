@@ -51,4 +51,14 @@ class User extends Authenticatable
             'is_verified' => 'boolean',
         ];
     }
+
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }    
+
+    public function verificationCodes()
+    {
+        return $this->hasMany(VerificationCode::class);
+    }
 }
