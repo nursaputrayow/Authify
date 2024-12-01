@@ -84,6 +84,15 @@ This project includes authentication routes under the `/v1` API version for user
   }
   ```
 
+- **Command to Switch Database Configuration (MySQL or SQLite)**
+  ```json
+  php artisan db:switch sqlite
+  php artisan db:switch mysql
+
+  php artisan config:cache
+  php artisan clean          
+  ```
+
 ### Authentication Middleware
 
 Routes that require authentication use the `auth:sanctum` middleware to protect user-specific actions, such as profile retrieval and updating.
