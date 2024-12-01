@@ -98,4 +98,14 @@ class AuthController extends Controller
             return $this->errorResponse('An error occurred during login', 500, ['error' => $e->getMessage()]);
         }
     }
+
+    public function logout(Request $request)
+    {
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return $this->successResponse(null, 'Logged out successfully');
+        } catch (\Exception $e) {
+            return $this->errorResponse('An error occurred during logout.', 500, ['error' => $e->getMessage()]);
+        }
+    }
 }
