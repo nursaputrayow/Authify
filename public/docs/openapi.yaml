@@ -163,8 +163,8 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+44283684392'
+                  description: 'The registered phone number of the user to reset the password for. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+1234567890'
                   nullable: false
               required:
                 - phone
@@ -220,7 +220,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: non
+                  example: fuga
                   nullable: false
               required:
                 - name

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "8557bf1a-f49f-49f9-aab4-21caf225bb2c",
+        "_postman_id": "7250a131-e411-4ed1-af98-901b383ed5e8",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -165,7 +165,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+44283684392\"}"
+                            "raw": "{\"phone\":\"+1234567890\"}"
                         },
                         "description": "",
                         "auth": {
@@ -272,7 +272,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"non\"}"
+                            "raw": "{\"name\":\"fuga\"}"
                         },
                         "description": "",
                         "auth": {

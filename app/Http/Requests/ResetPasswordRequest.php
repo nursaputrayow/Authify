@@ -32,4 +32,19 @@ class ResetPasswordRequest extends FormRequest
             'phone.exists' => 'This phone number is not registered in our system.',
         ];
     }
+
+    /**
+     * Define body parameters for Scribe.
+     *
+     * @return array
+     */
+    public function bodyParameters()
+    {
+        return [
+            'phone' => [
+                'description' => 'The registered phone number of the user to reset the password for.',
+                'example' => '+1234567890',
+            ],
+        ];
+    }
 }

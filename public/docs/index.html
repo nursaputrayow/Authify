@@ -752,7 +752,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": \"+44283684392\"
+    \"phone\": \"+1234567890\"
 }"
 </code></pre></div>
 
@@ -768,7 +768,7 @@ const headers = {
 };
 
 let body = {
-    "phone": "+44283684392"
+    "phone": "+1234567890"
 };
 
 fetch(url, {
@@ -857,10 +857,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-v1-reset-password"
-               value="+44283684392"
+               value="+1234567890"
                data-component="body">
     <br>
-<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+44283684392</code></p>
+<p>The registered phone number of the user to reset the password for. Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1234567890</code></p>
         </div>
         </form>
 
@@ -1113,7 +1113,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"non\"
+    \"name\": \"fuga\"
 }"
 </code></pre></div>
 
@@ -1129,7 +1129,7 @@ const headers = {
 };
 
 let body = {
-    "name": "non"
+    "name": "fuga"
 };
 
 fetch(url, {
@@ -1218,10 +1218,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-v1-profile-update"
-               value="non"
+               value="fuga"
                data-component="body">
     <br>
-<p>Example: <code>non</code></p>
+<p>Example: <code>fuga</code></p>
         </div>
         </form>
 
