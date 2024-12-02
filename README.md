@@ -1,3 +1,5 @@
+<div><img src="https://github.com/nursaputrayow/Authify/blob/main/resources/images/Authify.png" alt="Authify Logo" style="width:200px;"/></div>
+
 ## Authify: API Authentication Routes
 
 This project includes authentication routes under the `/v1` API version for user management:
