@@ -21,3 +21,7 @@ Route::get('/verify', function () {
 Route::get('/set-new-password', function () {
     return view('set-new-password');
 });
+
+Route::get('/reset-password', function () {
+    return view('reset-password');
+});
