@@ -377,14 +377,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: est
+        example: quos
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: est
+      name: quos
     fileParameters: []
     responses: []
     responseFields: []

@@ -10,8 +10,8 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "f07ace72-09e0-4a70-b2b9-e36a6a69ba71",
-        "description": "",
+        "_postman_id": "b021faf2-4e4b-4d8d-ac53-6f97227b944b",
+        "description": "Authify Description",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
@@ -272,7 +272,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"est\"}"
+                            "raw": "{\"name\":\"quos\"}"
                         },
                         "description": "",
                         "auth": {

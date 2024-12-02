@@ -1,6 +1,6 @@
 # Introduction
 
-
+Authify Description
 
 <aside>
     <strong>Base URL</strong>: <code>http://authify.test</code>

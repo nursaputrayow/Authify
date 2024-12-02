@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Authify
-  description: ''
+  description: 'Authify Description'
   version: 1.0.0
 servers:
   -
@@ -220,7 +220,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: est
+                  example: quos
                   nullable: false
               required:
                 - name
