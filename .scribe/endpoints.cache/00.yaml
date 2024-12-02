@@ -100,9 +100,9 @@ endpoints:
     bodyParameters:
       phone:
         name: phone
-        description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+        description: 'The registered phone number of the user. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+42432383843'
+        example: '+1234567890'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -110,17 +110,17 @@ endpoints:
         custom: []
       password:
         name: password
-        description: ''
+        description: 'The password for the user account.'
         required: true
-        example: 'SD)DI4bo*-@buEX'
+        example: password123
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+42432383843'
-      password: 'SD)DI4bo*-@buEX'
+      phone: '+1234567890'
+      password: password123
     fileParameters: []
     responses: []
     responseFields: []
@@ -154,7 +154,7 @@ endpoints:
         name: phone
         description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+62799909387707'
+        example: '+22621388979'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -164,15 +164,15 @@ endpoints:
         name: code
         description: 'Must be 6 digits. Must be 6 characters.'
         required: true
-        example: qkbnbk
+        example: kilrwq
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+62799909387707'
-      code: qkbnbk
+      phone: '+22621388979'
+      code: kilrwq
     fileParameters: []
     responses: []
     responseFields: []
@@ -206,7 +206,7 @@ endpoints:
         name: phone
         description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+166611659876098'
+        example: '+479596067422'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -216,7 +216,7 @@ endpoints:
         name: code
         description: 'Must be 6 digits. Must be 6 characters.'
         required: true
-        example: xqxzkz
+        example: becgwi
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -226,16 +226,16 @@ endpoints:
         name: password
         description: 'Must be at least 6 characters.'
         required: true
-        example: KB_tcKks
+        example: '+}wY|WlL~ke,T'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+166611659876098'
-      code: xqxzkz
-      password: KB_tcKks
+      phone: '+479596067422'
+      code: becgwi
+      password: '+}wY|WlL~ke,T'
     fileParameters: []
     responses: []
     responseFields: []
@@ -269,14 +269,14 @@ endpoints:
         name: phone
         description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+85046676258'
+        example: '+1609521823'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+85046676258'
+      phone: '+1609521823'
     fileParameters: []
     responses: []
     responseFields: []
@@ -379,14 +379,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: veritatis
+        example: quod
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: veritatis
+      name: quod
     fileParameters: []
     responses: []
     responseFields: []

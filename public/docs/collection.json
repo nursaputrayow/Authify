@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "5c6d9498-89fd-407d-8cf8-493bb6698035",
+        "_postman_id": "872a5f96-4742-4a63-a22c-e67ec57cb289",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -72,7 +72,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+42432383843\",\"password\":\"SD)DI4bo*-@buEX\"}"
+                            "raw": "{\"phone\":\"+1234567890\",\"password\":\"password123\"}"
                         },
                         "description": "",
                         "auth": {
@@ -103,7 +103,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+62799909387707\",\"code\":\"qkbnbk\"}"
+                            "raw": "{\"phone\":\"+22621388979\",\"code\":\"kilrwq\"}"
                         },
                         "description": "",
                         "auth": {
@@ -134,7 +134,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+166611659876098\",\"code\":\"xqxzkz\",\"password\":\"KB_tcKks\"}"
+                            "raw": "{\"phone\":\"+479596067422\",\"code\":\"becgwi\",\"password\":\"+}wY|WlL~ke,T\"}"
                         },
                         "description": "",
                         "auth": {
@@ -165,7 +165,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+85046676258\"}"
+                            "raw": "{\"phone\":\"+1609521823\"}"
                         },
                         "description": "",
                         "auth": {
@@ -272,7 +272,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"veritatis\"}"
+                            "raw": "{\"name\":\"quod\"}"
                         },
                         "description": "",
                         "auth": {

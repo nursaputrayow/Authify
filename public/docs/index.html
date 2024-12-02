@@ -313,8 +313,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": \"+42432383843\",
-    \"password\": \"SD)DI4bo*-@buEX\"
+    \"phone\": \"+1234567890\",
+    \"password\": \"password123\"
 }"
 </code></pre></div>
 
@@ -330,8 +330,8 @@ const headers = {
 };
 
 let body = {
-    "phone": "+42432383843",
-    "password": "SD)DI4bo*-@buEX"
+    "phone": "+1234567890",
+    "password": "password123"
 };
 
 fetch(url, {
@@ -420,10 +420,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-v1-login"
-               value="+42432383843"
+               value="+1234567890"
                data-component="body">
     <br>
-<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+42432383843</code></p>
+<p>The registered phone number of the user. Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -431,10 +431,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-v1-login"
-               value="SD)DI4bo*-@buEX"
+               value="password123"
                data-component="body">
     <br>
-<p>Example: <code>SD)DI4bo*-@buEX</code></p>
+<p>The password for the user account. Example: <code>password123</code></p>
         </div>
         </form>
 
@@ -455,8 +455,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": \"+62799909387707\",
-    \"code\": \"qkbnbk\"
+    \"phone\": \"+22621388979\",
+    \"code\": \"kilrwq\"
 }"
 </code></pre></div>
 
@@ -472,8 +472,8 @@ const headers = {
 };
 
 let body = {
-    "phone": "+62799909387707",
-    "code": "qkbnbk"
+    "phone": "+22621388979",
+    "code": "kilrwq"
 };
 
 fetch(url, {
@@ -562,10 +562,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-v1-verify"
-               value="+62799909387707"
+               value="+22621388979"
                data-component="body">
     <br>
-<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+62799909387707</code></p>
+<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+22621388979</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
@@ -573,10 +573,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="code"                data-endpoint="POSTapi-v1-verify"
-               value="qkbnbk"
+               value="kilrwq"
                data-component="body">
     <br>
-<p>Must be 6 digits. Must be 6 characters. Example: <code>qkbnbk</code></p>
+<p>Must be 6 digits. Must be 6 characters. Example: <code>kilrwq</code></p>
         </div>
         </form>
 
@@ -597,9 +597,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": \"+166611659876098\",
-    \"code\": \"xqxzkz\",
-    \"password\": \"KB_tcKks\"
+    \"phone\": \"+479596067422\",
+    \"code\": \"becgwi\",
+    \"password\": \"+}wY|WlL~ke,T\"
 }"
 </code></pre></div>
 
@@ -615,9 +615,9 @@ const headers = {
 };
 
 let body = {
-    "phone": "+166611659876098",
-    "code": "xqxzkz",
-    "password": "KB_tcKks"
+    "phone": "+479596067422",
+    "code": "becgwi",
+    "password": "+}wY|WlL~ke,T"
 };
 
 fetch(url, {
@@ -706,10 +706,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-v1-set-new-password"
-               value="+166611659876098"
+               value="+479596067422"
                data-component="body">
     <br>
-<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+166611659876098</code></p>
+<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+479596067422</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
@@ -717,10 +717,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="code"                data-endpoint="POSTapi-v1-set-new-password"
-               value="xqxzkz"
+               value="becgwi"
                data-component="body">
     <br>
-<p>Must be 6 digits. Must be 6 characters. Example: <code>xqxzkz</code></p>
+<p>Must be 6 digits. Must be 6 characters. Example: <code>becgwi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -728,10 +728,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-v1-set-new-password"
-               value="KB_tcKks"
+               value="+}wY|WlL~ke,T"
                data-component="body">
     <br>
-<p>Must be at least 6 characters. Example: <code>KB_tcKks</code></p>
+<p>Must be at least 6 characters. Example: <code>+}wY|WlL~ke,T</code></p>
         </div>
         </form>
 
@@ -752,7 +752,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"phone\": \"+85046676258\"
+    \"phone\": \"+1609521823\"
 }"
 </code></pre></div>
 
@@ -768,7 +768,7 @@ const headers = {
 };
 
 let body = {
-    "phone": "+85046676258"
+    "phone": "+1609521823"
 };
 
 fetch(url, {
@@ -857,10 +857,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="phone"                data-endpoint="POSTapi-v1-reset-password"
-               value="+85046676258"
+               value="+1609521823"
                data-component="body">
     <br>
-<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+85046676258</code></p>
+<p>Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1609521823</code></p>
         </div>
         </form>
 
@@ -1113,7 +1113,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"veritatis\"
+    \"name\": \"quod\"
 }"
 </code></pre></div>
 
@@ -1129,7 +1129,7 @@ const headers = {
 };
 
 let body = {
-    "name": "veritatis"
+    "name": "quod"
 };
 
 fetch(url, {
@@ -1218,10 +1218,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-v1-profile-update"
-               value="veritatis"
+               value="quod"
                data-component="body">
     <br>
-<p>Example: <code>veritatis</code></p>
+<p>Example: <code>quod</code></p>
         </div>
         </form>
 

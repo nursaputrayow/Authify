@@ -67,13 +67,13 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+42432383843'
+                  description: 'The registered phone number of the user. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+1234567890'
                   nullable: false
                 password:
                   type: string
-                  description: ''
-                  example: 'SD)DI4bo*-@buEX'
+                  description: 'The password for the user account.'
+                  example: password123
                   nullable: false
               required:
                 - phone
@@ -98,12 +98,12 @@ paths:
                 phone:
                   type: string
                   description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+62799909387707'
+                  example: '+22621388979'
                   nullable: false
                 code:
                   type: string
                   description: 'Must be 6 digits. Must be 6 characters.'
-                  example: qkbnbk
+                  example: kilrwq
                   nullable: false
               required:
                 - phone
@@ -128,17 +128,17 @@ paths:
                 phone:
                   type: string
                   description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+166611659876098'
+                  example: '+479596067422'
                   nullable: false
                 code:
                   type: string
                   description: 'Must be 6 digits. Must be 6 characters.'
-                  example: xqxzkz
+                  example: becgwi
                   nullable: false
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: KB_tcKks
+                  example: '+}wY|WlL~ke,T'
                   nullable: false
               required:
                 - phone
@@ -164,7 +164,7 @@ paths:
                 phone:
                   type: string
                   description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+85046676258'
+                  example: '+1609521823'
                   nullable: false
               required:
                 - phone
@@ -220,7 +220,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: veritatis
+                  example: quod
                   nullable: false
               required:
                 - name
