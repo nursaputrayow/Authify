@@ -25,3 +25,15 @@ Route::get('/set-new-password', function () {
 Route::get('/reset-password', function () {
     return view('reset-password');
 });
+
+Route::get('/logout', function () {
+    return view('logout');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/update-profile', function () {
+    return view('update-profile');
+});
