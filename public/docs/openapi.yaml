@@ -9,13 +9,73 @@ servers:
 paths:
   /api/v1/register:
     post:
-      summary: ''
-      operationId: postApiV1Register
-      description: ''
+      summary: 'User Registration'
+      operationId: userRegistration
+      description: 'Daftar pengguna baru dengan nama, nomor telepon, email, dan kata sandi. Verifikasi kode akan dikirim ke nomor telepon.'
       parameters: []
-      responses: {  }
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    phone: '+1234567890'
+                    email: john.doe@example.com
+                  verification_code: '123456'
+                  message: 'A verification code has been sent to your phone.'
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      phone:
+                        type: string
+                        example: '+1234567890'
+                      email:
+                        type: string
+                        example: john.doe@example.com
+                  verification_code:
+                    type: string
+                    example: '123456'
+                  message:
+                    type: string
+                    example: 'A verification code has been sent to your phone.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Validation failed'
+                  errors:
+                    phone:
+                      - 'The phone field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      phone:
+                        type: array
+                        example:
+                          - 'The phone field is required.'
+                        items:
+                          type: string
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -25,22 +85,27 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'The name of the user. Must be at least 2 characters. Must not be greater than 50 characters.'
+                  description: 'Nama pengguna.'
                   example: 'John Doe'
                   nullable: false
                 phone:
                   type: string
-                  description: 'The phone number of the user in international format. Must match the regex /^\+\d{10,15}$/.'
+                  description: 'Nomor telepon dalam format internasional.'
                   example: '+1234567890'
                   nullable: false
                 email:
                   type: string
-                  description: 'The email address of the user. Must be a valid email address.'
+                  description: 'Alamat email pengguna.'
                   example: john.doe@example.com
                   nullable: false
                 password:
                   type: string
-                  description: 'The password for the user account. Must be at least 6 characters.'
+                  description: 'Kata sandi untuk akun.'
+                  example: password123
+                  nullable: false
+                password_confirmation:
+                  type: string
+                  description: 'Konfirmasi kata sandi.'
                   example: password123
                   nullable: false
               required:
@@ -48,16 +113,61 @@ paths:
                 - phone
                 - email
                 - password
+                - password_confirmation
       security: []
   /api/v1/login:
     post:
-      summary: ''
-      operationId: postApiV1Login
-      description: ''
+      summary: 'User Login'
+      operationId: userLogin
+      description: 'Masuk dengan nomor telepon dan kata sandi pengguna.'
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    phone: '+1234567890'
+                    email: john.doe@example.com
+                  token: eyJhbGciOiJIUzI1NiIsInR5c...
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      phone:
+                        type: string
+                        example: '+1234567890'
+                      email:
+                        type: string
+                        example: john.doe@example.com
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5c...
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid login credentials'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid login credentials'
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -67,12 +177,12 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'The registered phone number of the user. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  description: 'Nomor telepon pengguna yang terdaftar.'
                   example: '+1234567890'
                   nullable: false
                 password:
                   type: string
-                  description: 'The password for the user account.'
+                  description: 'Kata sandi akun pengguna.'
                   example: password123
                   nullable: false
               required:
@@ -81,13 +191,69 @@ paths:
       security: []
   /api/v1/verify:
     post:
-      summary: ''
-      operationId: postApiV1Verify
-      description: ''
+      summary: 'Verify Phone Number'
+      operationId: verifyPhoneNumber
+      description: 'Verifikasi nomor telepon pengguna menggunakan kode verifikasi yang dikirim.'
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    phone: '+1234567890'
+                    is_verified: true
+                  token: eyJhbGciOiJIUzI1NiIsInR5c...
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      phone:
+                        type: string
+                        example: '+1234567890'
+                      is_verified:
+                        type: boolean
+                        example: true
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5c...
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not found'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid or expired verification code'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid or expired verification code'
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -97,12 +263,12 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'The phone number of the user to verify. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  description: 'Nomor telepon pengguna.'
                   example: '+1234567890'
                   nullable: false
                 code:
                   type: string
-                  description: 'The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters.'
+                  description: 'Kode verifikasi 6 digit.'
                   example: '123456'
                   nullable: false
               required:
@@ -111,13 +277,37 @@ paths:
       security: []
   /api/v1/set-new-password:
     post:
-      summary: ''
-      operationId: postApiV1SetNewPassword
-      description: ''
+      summary: 'Set New Password'
+      operationId: setNewPassword
+      description: 'Atur ulang kata sandi pengguna menggunakan kode verifikasi.'
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Password reset successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Password reset successfully'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid or expired verification code'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid or expired verification code'
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -127,33 +317,67 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'The registered phone number of the user. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  description: 'Nomor telepon pengguna.'
                   example: '+1234567890'
                   nullable: false
                 code:
                   type: string
-                  description: 'The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters.'
+                  description: 'Kode verifikasi 6 digit.'
                   example: '123456'
                   nullable: false
                 password:
                   type: string
-                  description: 'The new password for the user account. Must be at least 6 characters.'
+                  description: 'Kata sandi baru.'
+                  example: newpassword123
+                  nullable: false
+                password_confirmation:
+                  type: string
+                  description: 'Konfirmasi kata sandi baru.'
                   example: newpassword123
                   nullable: false
               required:
                 - phone
                 - code
                 - password
+                - password_confirmation
       security: []
   /api/v1/reset-password:
     post:
-      summary: ''
-      operationId: postApiV1ResetPassword
-      description: ''
+      summary: 'Request Password Reset'
+      operationId: requestPasswordReset
+      description: 'Kirim kode verifikasi untuk mengatur ulang kata sandi pengguna.'
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Password reset verification code sent'
+                  verification_code: '123456'
+                properties:
+                  message:
+                    type: string
+                    example: 'Password reset verification code sent'
+                  verification_code:
+                    type: string
+                    example: '123456'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not found'
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -163,7 +387,7 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'The registered phone number of the user to reset the password for. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  description: 'Nomor telepon pengguna yang terdaftar.'
                   example: '+1234567890'
                   nullable: false
               required:
@@ -171,45 +395,139 @@ paths:
       security: []
   /api/v1/logout:
     post:
-      summary: ''
-      operationId: postApiV1Logout
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Endpoints
-      security: []
-  /api/v1/profile:
-    get:
-      summary: ''
-      operationId: getApiV1Profile
-      description: ''
+      summary: 'User Logout'
+      operationId: userLogout
+      description: 'Keluar dari sistem dengan menghapus token akses pengguna.'
       parameters: []
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'Logged out successfully'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'Logged out successfully'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'An error occurred during logout.'
+                properties:
+                  message:
+                    type: string
+                    example: 'An error occurred during logout.'
       tags:
-        - Endpoints
-      security: []
+        - Authentication
+  /api/v1/profile:
+    get:
+      summary: 'Get User Profile'
+      operationId: getUserProfile
+      description: 'Ambil detail profil pengguna yang sedang masuk.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    phone: '+1234567890'
+                    email: john.doe@example.com
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      phone:
+                        type: string
+                        example: '+1234567890'
+                      email:
+                        type: string
+                        example: john.doe@example.com
+      tags:
+        - 'User Management'
   /api/v1/profile/update:
     post:
-      summary: ''
-      operationId: postApiV1ProfileUpdate
-      description: ''
+      summary: 'Update User Profile'
+      operationId: updateUserProfile
+      description: 'Perbarui informasi profil pengguna.'
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Profile updated successfully'
+                  user:
+                    id: 1
+                    name: 'Jane Doe'
+                    phone: '+1234567890'
+                    email: john.doe@example.com
+                properties:
+                  message:
+                    type: string
+                    example: 'Profile updated successfully'
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Jane Doe'
+                      phone:
+                        type: string
+                        example: '+1234567890'
+                      email:
+                        type: string
+                        example: john.doe@example.com
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Validation failed'
+                  errors:
+                    name:
+                      - 'The name field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
       tags:
-        - Endpoints
+        - 'User Management'
       requestBody:
         required: true
         content:
@@ -219,13 +537,15 @@ paths:
               properties:
                 name:
                   type: string
-                  description: ''
-                  example: quos
+                  description: 'Nama baru pengguna.'
+                  example: 'Jane Doe'
                   nullable: false
               required:
                 - name
-      security: []
 tags:
   -
-    name: Endpoints
+    name: Authentication
+    description: ''
+  -
+    name: 'User Management'
     description: ''

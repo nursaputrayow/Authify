@@ -10,17 +10,17 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "b021faf2-4e4b-4d8d-ac53-6f97227b944b",
+        "_postman_id": "be4c51b5-d4c2-4f51-a2e5-2a11500112e2",
         "description": "Authify Description",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Endpoints",
+            "name": "Authentication",
             "description": "",
             "item": [
                 {
-                    "name": "POST api\/v1\/register",
+                    "name": "User Registration",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -41,17 +41,30 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"John Doe\",\"phone\":\"+1234567890\",\"email\":\"john.doe@example.com\",\"password\":\"password123\"}"
+                            "raw": "{\"name\":\"John Doe\",\"phone\":\"+1234567890\",\"email\":\"john.doe@example.com\",\"password\":\"password123\",\"password_confirmation\":\"password123\"}"
                         },
-                        "description": "",
+                        "description": "Daftar pengguna baru dengan nama, nomor telepon, email, dan kata sandi. Verifikasi kode akan dikirim ke nomor telepon.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"phone\": \"+1234567890\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"verification_code\": \"123456\",\n  \"message\": \"A verification code has been sent to your phone.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"Validation failed\",\n  \"errors\": {\n    \"phone\": [\"The phone field is required.\"]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "POST api\/v1\/login",
+                    "name": "User Login",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -74,15 +87,28 @@
                             "mode": "raw",
                             "raw": "{\"phone\":\"+1234567890\",\"password\":\"password123\"}"
                         },
-                        "description": "",
+                        "description": "Masuk dengan nomor telepon dan kata sandi pengguna.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"phone\": \"+1234567890\",\n    \"email\": \"john.doe@example.com\"\n  },\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5c...\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n  \"message\": \"Invalid login credentials\"\n}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "POST api\/v1\/verify",
+                    "name": "Verify Phone Number",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -105,15 +131,34 @@
                             "mode": "raw",
                             "raw": "{\"phone\":\"+1234567890\",\"code\":\"123456\"}"
                         },
-                        "description": "",
+                        "description": "Verifikasi nomor telepon pengguna menggunakan kode verifikasi yang dikirim.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"phone\": \"+1234567890\",\n    \"is_verified\": true\n  },\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5c...\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n  \"message\": \"User not found\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"Invalid or expired verification code\"\n}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "POST api\/v1\/set-new-password",
+                    "name": "Set New Password",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -134,17 +179,30 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+1234567890\",\"code\":\"123456\",\"password\":\"newpassword123\"}"
+                            "raw": "{\"phone\":\"+1234567890\",\"code\":\"123456\",\"password\":\"newpassword123\",\"password_confirmation\":\"newpassword123\"}"
                         },
-                        "description": "",
+                        "description": "Atur ulang kata sandi pengguna menggunakan kode verifikasi.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Password reset successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"Invalid or expired verification code\"\n}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "POST api\/v1\/reset-password",
+                    "name": "Request Password Reset",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -167,15 +225,28 @@
                             "mode": "raw",
                             "raw": "{\"phone\":\"+1234567890\"}"
                         },
-                        "description": "",
+                        "description": "Kirim kode verifikasi untuk mengatur ulang kata sandi pengguna.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Password reset verification code sent\",\n  \"verification_code\": \"123456\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n  \"message\": \"User not found\"\n}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "POST api\/v1\/logout",
+                    "name": "User Logout",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -195,15 +266,31 @@
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Keluar dari sistem dengan menghapus token akses pengguna."
                     },
-                    "response": []
-                },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Logged out successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n  \"message\": \"An error occurred during logout.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Management",
+            "description": "",
+            "item": [
                 {
-                    "name": "GET api\/v1\/profile",
+                    "name": "Get User Profile",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -223,35 +310,19 @@
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Ambil detail profil pengguna yang sedang masuk."
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"phone\": \"+1234567890\",\n    \"email\": \"john.doe@example.com\"\n  }\n}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "POST api\/v1\/profile\/update",
+                    "name": "Update User Profile",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -272,14 +343,24 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quos\"}"
+                            "raw": "{\"name\":\"Jane Doe\"}"
                         },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Perbarui informasi profil pengguna."
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Profile updated successfully\",\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"Jane Doe\",\n    \"phone\": \"+1234567890\",\n    \"email\": \"john.doe@example.com\"\n  }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"Validation failed\",\n  \"errors\": {\n    \"name\": [\"The name field is required.\"]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         }

@@ -66,34 +66,41 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-register">
-                                <a href="#endpoints-POSTapi-v1-register">POST api/v1/register</a>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-register">
+                                <a href="#authentication-POSTapi-v1-register">User Registration</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-login">
-                                <a href="#endpoints-POSTapi-v1-login">POST api/v1/login</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-login">
+                                <a href="#authentication-POSTapi-v1-login">User Login</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-verify">
-                                <a href="#endpoints-POSTapi-v1-verify">POST api/v1/verify</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-verify">
+                                <a href="#authentication-POSTapi-v1-verify">Verify Phone Number</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-set-new-password">
-                                <a href="#endpoints-POSTapi-v1-set-new-password">POST api/v1/set-new-password</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-set-new-password">
+                                <a href="#authentication-POSTapi-v1-set-new-password">Set New Password</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-reset-password">
-                                <a href="#endpoints-POSTapi-v1-reset-password">POST api/v1/reset-password</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-reset-password">
+                                <a href="#authentication-POSTapi-v1-reset-password">Request Password Reset</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-logout">
-                                <a href="#endpoints-POSTapi-v1-logout">POST api/v1/logout</a>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-logout">
+                                <a href="#authentication-POSTapi-v1-logout">User Logout</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-profile">
-                                <a href="#endpoints-GETapi-v1-profile">GET api/v1/profile</a>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-user-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user-management">
+                    <a href="#user-management">User Management</a>
+                </li>
+                                    <ul id="tocify-subheader-user-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-management-GETapi-v1-profile">
+                                <a href="#user-management-GETapi-v1-profile">Get User Profile</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-profile-update">
-                                <a href="#endpoints-POSTapi-v1-profile-update">POST api/v1/profile/update</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-management-POSTapi-v1-profile-update">
+                                <a href="#user-management-POSTapi-v1-profile-update">Update User Profile</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -125,16 +132,16 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="authentication">Authentication</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-v1-register">POST api/v1/register</h2>
+                                <h2 id="authentication-POSTapi-v1-register">User Registration</h2>
 
 <p>
 </p>
 
-
+<p>Daftar pengguna baru dengan nama, nomor telepon, email, dan kata sandi. Verifikasi kode akan dikirim ke nomor telepon.</p>
 
 <span id="example-requests-POSTapi-v1-register">
 <blockquote>Example request:</blockquote>
@@ -149,7 +156,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     \"name\": \"John Doe\",
     \"phone\": \"+1234567890\",
     \"email\": \"john.doe@example.com\",
-    \"password\": \"password123\"
+    \"password\": \"password123\",
+    \"password_confirmation\": \"password123\"
 }"
 </code></pre></div>
 
@@ -168,7 +176,8 @@ let body = {
     "name": "John Doe",
     "phone": "+1234567890",
     "email": "john.doe@example.com",
-    "password": "password123"
+    "password": "password123",
+    "password_confirmation": "password123"
 };
 
 fetch(url, {
@@ -180,7 +189,37 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-register">
-</span>
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;phone&quot;: &quot;+1234567890&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    },
+    &quot;verification_code&quot;: &quot;123456&quot;,
+    &quot;message&quot;: &quot;A verification code has been sent to your phone.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Validation failed&quot;,
+    &quot;errors&quot;: {
+        &quot;phone&quot;: [
+            &quot;The phone field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-register" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-register"></span>:
@@ -260,7 +299,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="John Doe"
                data-component="body">
     <br>
-<p>The name of the user. Must be at least 2 characters. Must not be greater than 50 characters. Example: <code>John Doe</code></p>
+<p>Nama pengguna. Example: <code>John Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -271,7 +310,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+1234567890"
                data-component="body">
     <br>
-<p>The phone number of the user in international format. Must match the regex /^+\d{10,15}$/. Example: <code>+1234567890</code></p>
+<p>Nomor telepon dalam format internasional. Example: <code>+1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -282,7 +321,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="john.doe@example.com"
                data-component="body">
     <br>
-<p>The email address of the user. Must be a valid email address. Example: <code>john.doe@example.com</code></p>
+<p>Alamat email pengguna. Example: <code>john.doe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -293,16 +332,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="password123"
                data-component="body">
     <br>
-<p>The password for the user account. Must be at least 6 characters. Example: <code>password123</code></p>
+<p>Kata sandi untuk akun. Example: <code>password123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-v1-register"
+               value="password123"
+               data-component="body">
+    <br>
+<p>Konfirmasi kata sandi. Example: <code>password123</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-login">POST api/v1/login</h2>
+                    <h2 id="authentication-POSTapi-v1-login">User Login</h2>
 
 <p>
 </p>
 
-
+<p>Masuk dengan nomor telepon dan kata sandi pengguna.</p>
 
 <span id="example-requests-POSTapi-v1-login">
 <blockquote>Example request:</blockquote>
@@ -344,7 +394,31 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-login">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;phone&quot;: &quot;+1234567890&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    },
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5c...&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Invalid login credentials&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-login" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-login"></span>:
@@ -424,7 +498,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+1234567890"
                data-component="body">
     <br>
-<p>The registered phone number of the user. Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1234567890</code></p>
+<p>Nomor telepon pengguna yang terdaftar. Example: <code>+1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -435,16 +509,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="password123"
                data-component="body">
     <br>
-<p>The password for the user account. Example: <code>password123</code></p>
+<p>Kata sandi akun pengguna. Example: <code>password123</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-verify">POST api/v1/verify</h2>
+                    <h2 id="authentication-POSTapi-v1-verify">Verify Phone Number</h2>
 
 <p>
 </p>
 
-
+<p>Verifikasi nomor telepon pengguna menggunakan kode verifikasi yang dikirim.</p>
 
 <span id="example-requests-POSTapi-v1-verify">
 <blockquote>Example request:</blockquote>
@@ -486,7 +560,40 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-verify">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;phone&quot;: &quot;+1234567890&quot;,
+        &quot;is_verified&quot;: true
+    },
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5c...&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;User not found&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Invalid or expired verification code&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-verify" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-verify"></span>:
@@ -566,7 +673,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+1234567890"
                data-component="body">
     <br>
-<p>The phone number of the user to verify. Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1234567890</code></p>
+<p>Nomor telepon pengguna. Example: <code>+1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
@@ -577,16 +684,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="123456"
                data-component="body">
     <br>
-<p>The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters. Example: <code>123456</code></p>
+<p>Kode verifikasi 6 digit. Example: <code>123456</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-set-new-password">POST api/v1/set-new-password</h2>
+                    <h2 id="authentication-POSTapi-v1-set-new-password">Set New Password</h2>
 
 <p>
 </p>
 
-
+<p>Atur ulang kata sandi pengguna menggunakan kode verifikasi.</p>
 
 <span id="example-requests-POSTapi-v1-set-new-password">
 <blockquote>Example request:</blockquote>
@@ -600,7 +707,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"phone\": \"+1234567890\",
     \"code\": \"123456\",
-    \"password\": \"newpassword123\"
+    \"password\": \"newpassword123\",
+    \"password_confirmation\": \"newpassword123\"
 }"
 </code></pre></div>
 
@@ -618,7 +726,8 @@ const headers = {
 let body = {
     "phone": "+1234567890",
     "code": "123456",
-    "password": "newpassword123"
+    "password": "newpassword123",
+    "password_confirmation": "newpassword123"
 };
 
 fetch(url, {
@@ -630,7 +739,25 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-set-new-password">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Password reset successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Invalid or expired verification code&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-set-new-password" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-set-new-password"></span>:
@@ -710,7 +837,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+1234567890"
                data-component="body">
     <br>
-<p>The registered phone number of the user. Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1234567890</code></p>
+<p>Nomor telepon pengguna. Example: <code>+1234567890</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>code</code></b>&nbsp;&nbsp;
@@ -721,7 +848,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="123456"
                data-component="body">
     <br>
-<p>The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters. Example: <code>123456</code></p>
+<p>Kode verifikasi 6 digit. Example: <code>123456</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -732,16 +859,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="newpassword123"
                data-component="body">
     <br>
-<p>The new password for the user account. Must be at least 6 characters. Example: <code>newpassword123</code></p>
+<p>Kata sandi baru. Example: <code>newpassword123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-v1-set-new-password"
+               value="newpassword123"
+               data-component="body">
+    <br>
+<p>Konfirmasi kata sandi baru. Example: <code>newpassword123</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-reset-password">POST api/v1/reset-password</h2>
+                    <h2 id="authentication-POSTapi-v1-reset-password">Request Password Reset</h2>
 
 <p>
 </p>
 
-
+<p>Kirim kode verifikasi untuk mengatur ulang kata sandi pengguna.</p>
 
 <span id="example-requests-POSTapi-v1-reset-password">
 <blockquote>Example request:</blockquote>
@@ -781,7 +919,26 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-reset-password">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Password reset verification code sent&quot;,
+    &quot;verification_code&quot;: &quot;123456&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;User not found&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-reset-password" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-reset-password"></span>:
@@ -861,16 +1018,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+1234567890"
                data-component="body">
     <br>
-<p>The registered phone number of the user to reset the password for. Must match the regex /^+\d{10,15}$/. The <code>phone</code> of an existing record in the users table. Example: <code>+1234567890</code></p>
+<p>Nomor telepon pengguna yang terdaftar. Example: <code>+1234567890</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-logout">POST api/v1/logout</h2>
+                    <h2 id="authentication-POSTapi-v1-logout">User Logout</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Keluar dari sistem dengan menghapus token akses pengguna.</p>
 
 <span id="example-requests-POSTapi-v1-logout">
 <blockquote>Example request:</blockquote>
@@ -901,7 +1059,25 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-logout">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Logged out successfully&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;An error occurred during logout.&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-logout" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-logout"></span>:
@@ -919,7 +1095,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-v1-logout" data-method="POST"
       data-path="api/v1/logout"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -973,12 +1149,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-v1-profile">GET api/v1/profile</h2>
+                <h1 id="user-management">User Management</h1>
+
+    
+
+                                <h2 id="user-management-GETapi-v1-profile">Get User Profile</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Ambil detail profil pengguna yang sedang masuk.</p>
 
 <span id="example-requests-GETapi-v1-profile">
 <blockquote>Example request:</blockquote>
@@ -1010,19 +1191,17 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-profile">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;phone&quot;: &quot;+1234567890&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    }
 }</code>
  </pre>
     </span>
@@ -1043,7 +1222,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-v1-profile" data-method="GET"
       data-path="api/v1/profile"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1097,12 +1276,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-profile-update">POST api/v1/profile/update</h2>
+                    <h2 id="user-management-POSTapi-v1-profile-update">Update User Profile</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Perbarui informasi profil pengguna.</p>
 
 <span id="example-requests-POSTapi-v1-profile-update">
 <blockquote>Example request:</blockquote>
@@ -1114,7 +1294,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"quos\"
+    \"name\": \"Jane Doe\"
 }"
 </code></pre></div>
 
@@ -1130,7 +1310,7 @@ const headers = {
 };
 
 let body = {
-    "name": "quos"
+    "name": "Jane Doe"
 };
 
 fetch(url, {
@@ -1142,7 +1322,36 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-v1-profile-update">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Profile updated successfully&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Jane Doe&quot;,
+        &quot;phone&quot;: &quot;+1234567890&quot;,
+        &quot;email&quot;: &quot;john.doe@example.com&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Validation failed&quot;,
+    &quot;errors&quot;: {
+        &quot;name&quot;: [
+            &quot;The name field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-profile-update" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-profile-update"></span>:
@@ -1160,7 +1369,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-v1-profile-update" data-method="POST"
       data-path="api/v1/profile/update"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1219,10 +1428,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-v1-profile-update"
-               value="quos"
+               value="Jane Doe"
                data-component="body">
     <br>
-<p>Example: <code>quos</code></p>
+<p>Nama baru pengguna. Example: <code>Jane Doe</code></p>
         </div>
         </form>
 
