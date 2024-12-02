@@ -377,14 +377,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: fuga
+        example: est
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: fuga
+      name: est
     fileParameters: []
     responses: []
     responseFields: []

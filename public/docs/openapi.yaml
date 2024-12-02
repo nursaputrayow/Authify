@@ -220,7 +220,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: fuga
+                  example: est
                   nullable: false
               required:
                 - name

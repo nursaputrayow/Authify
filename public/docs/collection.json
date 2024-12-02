@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "7250a131-e411-4ed1-af98-901b383ed5e8",
+        "_postman_id": "f07ace72-09e0-4a70-b2b9-e36a6a69ba71",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -272,7 +272,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"fuga\"}"
+                            "raw": "{\"name\":\"est\"}"
                         },
                         "description": "",
                         "auth": {
