@@ -1,0 +1,231 @@
+openapi: 3.0.3
+info:
+  title: Authify
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://authify.test'
+paths:
+  /api/v1/register:
+    post:
+      summary: ''
+      operationId: postApiV1Register
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user. Must be at least 2 characters. Must not be greater than 50 characters.'
+                  example: 'John Doe'
+                  nullable: false
+                phone:
+                  type: string
+                  description: 'The phone number of the user in international format. Must match the regex /^\+\d{10,15}$/.'
+                  example: '+1234567890'
+                  nullable: false
+                email:
+                  type: string
+                  description: 'The email address of the user. Must be a valid email address.'
+                  example: john.doe@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: 'The password for the user account. Must be at least 6 characters.'
+                  example: password123
+                  nullable: false
+              required:
+                - name
+                - phone
+                - email
+                - password
+      security: []
+  /api/v1/login:
+    post:
+      summary: ''
+      operationId: postApiV1Login
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+42432383843'
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: 'SD)DI4bo*-@buEX'
+                  nullable: false
+              required:
+                - phone
+                - password
+      security: []
+  /api/v1/verify:
+    post:
+      summary: ''
+      operationId: postApiV1Verify
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+62799909387707'
+                  nullable: false
+                code:
+                  type: string
+                  description: 'Must be 6 digits. Must be 6 characters.'
+                  example: qkbnbk
+                  nullable: false
+              required:
+                - phone
+                - code
+      security: []
+  /api/v1/set-new-password:
+    post:
+      summary: ''
+      operationId: postApiV1SetNewPassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+166611659876098'
+                  nullable: false
+                code:
+                  type: string
+                  description: 'Must be 6 digits. Must be 6 characters.'
+                  example: xqxzkz
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters.'
+                  example: KB_tcKks
+                  nullable: false
+              required:
+                - phone
+                - code
+                - password
+      security: []
+  /api/v1/reset-password:
+    post:
+      summary: ''
+      operationId: postApiV1ResetPassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+85046676258'
+                  nullable: false
+              required:
+                - phone
+      security: []
+  /api/v1/logout:
+    post:
+      summary: ''
+      operationId: postApiV1Logout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/profile:
+    get:
+      summary: ''
+      operationId: getApiV1Profile
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/profile/update:
+    post:
+      summary: ''
+      operationId: postApiV1ProfileUpdate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: veritatis
+                  nullable: false
+              required:
+                - name
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

@@ -44,4 +44,35 @@ class RegisterRequest extends FormRequest
             'password.confirmed' => 'The password confirmation does not match.',
         ];
     }
+
+    /**
+     * Define body parameters for Scribe.
+     *
+     * @return array
+     */
+    public function bodyParameters()
+    {
+        return [
+            'name' => [
+                'description' => 'The name of the user.',
+                'example' => 'John Doe',
+            ],
+            'phone' => [
+                'description' => 'The phone number of the user in international format.',
+                'example' => '+1234567890',
+            ],
+            'email' => [
+                'description' => 'The email address of the user.',
+                'example' => 'john.doe@example.com',
+            ],
+            'password' => [
+                'description' => 'The password for the user account.',
+                'example' => 'password123',
+            ],
+            'password_confirmation' => [
+                'description' => 'Password confirmation for the user account.',
+                'example' => 'password123',
+            ],
+        ];
+    }
 }
