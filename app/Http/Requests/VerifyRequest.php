@@ -36,4 +36,23 @@ class VerifyRequest extends FormRequest
             'code.digits' => 'The verification code must contain only numbers.',
         ];
     }
+
+    /**
+     * Define body parameters for Scribe.
+     *
+     * @return array
+     */
+    public function bodyParameters()
+    {
+        return [
+            'phone' => [
+                'description' => 'The phone number of the user to verify.',
+                'example' => '+1234567890',
+            ],
+            'code' => [
+                'description' => 'The 6-digit verification code sent to the user.',
+                'example' => '123456',
+            ],
+        ];
+    }
 }

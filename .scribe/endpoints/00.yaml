@@ -150,9 +150,9 @@ endpoints:
     bodyParameters:
       phone:
         name: phone
-        description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+        description: 'The phone number of the user to verify. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+22621388979'
+        example: '+1234567890'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -160,17 +160,17 @@ endpoints:
         custom: []
       code:
         name: code
-        description: 'Must be 6 digits. Must be 6 characters.'
+        description: 'The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters.'
         required: true
-        example: kilrwq
+        example: '123456'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+22621388979'
-      code: kilrwq
+      phone: '+1234567890'
+      code: '123456'
     fileParameters: []
     responses: []
     responseFields: []
@@ -204,7 +204,7 @@ endpoints:
         name: phone
         description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+479596067422'
+        example: '+7090676594973'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -214,7 +214,7 @@ endpoints:
         name: code
         description: 'Must be 6 digits. Must be 6 characters.'
         required: true
-        example: becgwi
+        example: mpraev
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -224,16 +224,16 @@ endpoints:
         name: password
         description: 'Must be at least 6 characters.'
         required: true
-        example: '+}wY|WlL~ke,T'
+        example: 'gHh6[:-0'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+479596067422'
-      code: becgwi
-      password: '+}wY|WlL~ke,T'
+      phone: '+7090676594973'
+      code: mpraev
+      password: 'gHh6[:-0'
     fileParameters: []
     responses: []
     responseFields: []
@@ -267,14 +267,14 @@ endpoints:
         name: phone
         description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+1609521823'
+        example: '+582455479106'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+1609521823'
+      phone: '+582455479106'
     fileParameters: []
     responses: []
     responseFields: []
@@ -377,14 +377,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: quod
+        example: quo
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: quod
+      name: quo
     fileParameters: []
     responses: []
     responseFields: []

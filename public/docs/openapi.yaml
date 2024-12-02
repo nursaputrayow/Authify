@@ -97,13 +97,13 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+22621388979'
+                  description: 'The phone number of the user to verify. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+1234567890'
                   nullable: false
                 code:
                   type: string
-                  description: 'Must be 6 digits. Must be 6 characters.'
-                  example: kilrwq
+                  description: 'The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters.'
+                  example: '123456'
                   nullable: false
               required:
                 - phone
@@ -128,17 +128,17 @@ paths:
                 phone:
                   type: string
                   description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+479596067422'
+                  example: '+7090676594973'
                   nullable: false
                 code:
                   type: string
                   description: 'Must be 6 digits. Must be 6 characters.'
-                  example: becgwi
+                  example: mpraev
                   nullable: false
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: '+}wY|WlL~ke,T'
+                  example: 'gHh6[:-0'
                   nullable: false
               required:
                 - phone
@@ -164,7 +164,7 @@ paths:
                 phone:
                   type: string
                   description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+1609521823'
+                  example: '+582455479106'
                   nullable: false
               required:
                 - phone
@@ -220,7 +220,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quod
+                  example: quo
                   nullable: false
               required:
                 - name

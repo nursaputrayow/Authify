@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "872a5f96-4742-4a63-a22c-e67ec57cb289",
+        "_postman_id": "fac655fe-8e76-40e6-ae3d-e0e0adc055c6",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -103,7 +103,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+22621388979\",\"code\":\"kilrwq\"}"
+                            "raw": "{\"phone\":\"+1234567890\",\"code\":\"123456\"}"
                         },
                         "description": "",
                         "auth": {
@@ -134,7 +134,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+479596067422\",\"code\":\"becgwi\",\"password\":\"+}wY|WlL~ke,T\"}"
+                            "raw": "{\"phone\":\"+7090676594973\",\"code\":\"mpraev\",\"password\":\"gHh6[:-0\"}"
                         },
                         "description": "",
                         "auth": {
@@ -165,7 +165,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+1609521823\"}"
+                            "raw": "{\"phone\":\"+582455479106\"}"
                         },
                         "description": "",
                         "auth": {
@@ -272,7 +272,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quod\"}"
+                            "raw": "{\"name\":\"quo\"}"
                         },
                         "description": "",
                         "auth": {
