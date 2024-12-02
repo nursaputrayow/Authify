@@ -202,9 +202,9 @@ endpoints:
     bodyParameters:
       phone:
         name: phone
-        description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+        description: 'The registered phone number of the user. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+7090676594973'
+        example: '+1234567890'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -212,9 +212,9 @@ endpoints:
         custom: []
       code:
         name: code
-        description: 'Must be 6 digits. Must be 6 characters.'
+        description: 'The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters.'
         required: true
-        example: mpraev
+        example: '123456'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -222,18 +222,18 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Must be at least 6 characters.'
+        description: 'The new password for the user account. Must be at least 6 characters.'
         required: true
-        example: 'gHh6[:-0'
+        example: newpassword123
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+7090676594973'
-      code: mpraev
-      password: 'gHh6[:-0'
+      phone: '+1234567890'
+      code: '123456'
+      password: newpassword123
     fileParameters: []
     responses: []
     responseFields: []
@@ -267,14 +267,14 @@ endpoints:
         name: phone
         description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
         required: true
-        example: '+582455479106'
+        example: '+44283684392'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      phone: '+582455479106'
+      phone: '+44283684392'
     fileParameters: []
     responses: []
     responseFields: []
@@ -377,14 +377,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: quo
+        example: non
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      name: quo
+      name: non
     fileParameters: []
     responses: []
     responseFields: []

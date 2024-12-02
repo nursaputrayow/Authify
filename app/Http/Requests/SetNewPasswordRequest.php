@@ -40,4 +40,31 @@ class SetNewPasswordRequest extends FormRequest
             'password.confirmed' => 'The password confirmation does not match.',
         ];
     }
+
+    /**
+     * Define body parameters for Scribe.
+     *
+     * @return array
+     */
+    public function bodyParameters()
+    {
+        return [
+            'phone' => [
+                'description' => 'The registered phone number of the user.',
+                'example' => '+1234567890',
+            ],
+            'code' => [
+                'description' => 'The 6-digit verification code sent to the user.',
+                'example' => '123456',
+            ],
+            'password' => [
+                'description' => 'The new password for the user account.',
+                'example' => 'newpassword123',
+            ],
+            'password_confirmation' => [
+                'description' => 'The confirmation of the new password.',
+                'example' => 'newpassword123',
+            ],
+        ];
+    }
 }

@@ -127,18 +127,18 @@ paths:
               properties:
                 phone:
                   type: string
-                  description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+7090676594973'
+                  description: 'The registered phone number of the user. Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
+                  example: '+1234567890'
                   nullable: false
                 code:
                   type: string
-                  description: 'Must be 6 digits. Must be 6 characters.'
-                  example: mpraev
+                  description: 'The 6-digit verification code sent to the user. Must be 6 digits. Must be 6 characters.'
+                  example: '123456'
                   nullable: false
                 password:
                   type: string
-                  description: 'Must be at least 6 characters.'
-                  example: 'gHh6[:-0'
+                  description: 'The new password for the user account. Must be at least 6 characters.'
+                  example: newpassword123
                   nullable: false
               required:
                 - phone
@@ -164,7 +164,7 @@ paths:
                 phone:
                   type: string
                   description: 'Must match the regex /^\+\d{10,15}$/. The <code>phone</code> of an existing record in the users table.'
-                  example: '+582455479106'
+                  example: '+44283684392'
                   nullable: false
               required:
                 - phone
@@ -220,7 +220,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quo
+                  example: non
                   nullable: false
               required:
                 - name

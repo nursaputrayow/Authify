@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Authify",
-        "_postman_id": "fac655fe-8e76-40e6-ae3d-e0e0adc055c6",
+        "_postman_id": "8557bf1a-f49f-49f9-aab4-21caf225bb2c",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -134,7 +134,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+7090676594973\",\"code\":\"mpraev\",\"password\":\"gHh6[:-0\"}"
+                            "raw": "{\"phone\":\"+1234567890\",\"code\":\"123456\",\"password\":\"newpassword123\"}"
                         },
                         "description": "",
                         "auth": {
@@ -165,7 +165,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"phone\":\"+582455479106\"}"
+                            "raw": "{\"phone\":\"+44283684392\"}"
                         },
                         "description": "",
                         "auth": {
@@ -272,7 +272,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quo\"}"
+                            "raw": "{\"name\":\"non\"}"
                         },
                         "description": "",
                         "auth": {
