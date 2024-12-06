@@ -53,3 +53,7 @@ Route::get('/401', function () {
 Route::get('/500', function () {
     return response()->view('errors.500', [], 500);
 })->name('500');
+
+Route::get('/429', function () {
+    return response()->view('errors.429', [], 429);
+})->name('429');
