@@ -44,7 +44,6 @@
     document.getElementById('registerForm').addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      // Clear previous error messages
       const errorFields = ['name', 'phone', 'email', 'password', 'password_confirmation'];
       errorFields.forEach(field => {
         const errorElement = document.getElementById(`${field}Error`);
@@ -55,7 +54,7 @@
       });
 
       const messageDiv = document.getElementById('message');
-      messageDiv.classList.add('hidden'); // Hide global message box before processing
+      messageDiv.classList.add('hidden');
 
       const data = {
         name: document.getElementById('name').value,
@@ -75,12 +74,10 @@
         const result = await response.json();
 
         if (response.status === 201) {
-          // Success message
           messageDiv.textContent = 'Registration successful! Please verify your phone.';
           messageDiv.className = 'p-4 mb-4 bg-green-100 text-green-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         } else if (response.status === 422) {
-          // Validation errors
           const errors = result.errors || {};
           for (const field in errors) {
             const errorElement = document.getElementById(`${field}Error`);
@@ -90,13 +87,11 @@
             }
           }
         } else {
-          // Other errors
           messageDiv.textContent = `Error: ${result.message || 'An unexpected error occurred.'}`;
           messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         }
       } catch (error) {
-        // Network or other unexpected errors
         messageDiv.textContent = 'Error: Unable to connect to the server.';
         messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
         messageDiv.classList.remove('hidden');
