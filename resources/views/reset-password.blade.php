@@ -11,14 +11,12 @@
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Reset Password</h2>
     <div id="message" class="mb-4 hidden p-4 rounded-lg text-center"></div>
     <form id="resetPasswordForm" class="space-y-4">
-      <!-- Phone Input -->
       <div>
         <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
         <input type="text" id="phone" name="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="+62xxxxxxxx" required>
         <p id="phoneError" class="mt-1 text-red-600 text-sm hidden"></p>
       </div>
 
-      <!-- Submit Button -->
       <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700">Send Reset Link</button>
     </form>
   </div>
@@ -27,7 +25,6 @@
     document.getElementById('resetPasswordForm').addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      // Clear previous error messages
       const errorFields = ['phone'];
       errorFields.forEach(field => {
         const errorElement = document.getElementById(`${field}Error`);
@@ -38,7 +35,7 @@
       });
 
       const messageDiv = document.getElementById('message');
-      messageDiv.classList.add('hidden'); // Hide global message box before processing
+      messageDiv.classList.add('hidden');
 
       const data = {
         phone: document.getElementById('phone').value
@@ -54,12 +51,10 @@
         const result = await response.json();
 
         if (response.status === 200) {
-          // Success message
           messageDiv.textContent = 'A password reset link has been sent to your phone.';
           messageDiv.className = 'p-4 mb-4 bg-green-100 text-green-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         } else if (response.status === 422) {
-          // Validation errors
           const errors = result.errors || {};
           for (const field in errors) {
             const errorElement = document.getElementById(`${field}Error`);
@@ -69,13 +64,11 @@
             }
           }
         } else {
-          // Other errors
           messageDiv.textContent = `Error: ${result.message || 'An unexpected error occurred.'}`;
           messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         }
       } catch (error) {
-        // Network or other unexpected errors
         messageDiv.textContent = 'Error: Unable to connect to the server.';
         messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
         messageDiv.classList.remove('hidden');
