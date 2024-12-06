@@ -38,7 +38,7 @@
       event.preventDefault();
 
       const messageDiv = document.getElementById('message');
-      messageDiv.classList.add('hidden'); // Hide previous messages
+      messageDiv.classList.add('hidden');
 
       const data = {
         name: document.getElementById('name').value,
@@ -59,18 +59,15 @@
         const result = await response.json();
 
         if (response.status === 200) {
-          // Success message
           messageDiv.textContent = 'Profile updated successfully!';
           messageDiv.className = 'p-4 mb-4 bg-green-100 text-green-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         } else {
-          // Validation errors
           messageDiv.textContent = `Error: ${result.message || 'Something went wrong.'}`;
           messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         }
       } catch (error) {
-        // Network or unexpected errors
         messageDiv.textContent = 'Error: Unable to connect to the server.';
         messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
         messageDiv.classList.remove('hidden');
