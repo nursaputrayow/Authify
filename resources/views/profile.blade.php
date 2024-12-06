@@ -10,7 +10,6 @@
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Your Profile</h2>
     
-    <!-- Profile Information -->
     <div class="space-y-4">
       <div>
         <h3 class="text-sm font-medium text-gray-700">Name</h3>
@@ -34,7 +33,6 @@
   </div>
 
   <script>
-    // Fetch the user's profile information
     async function loadProfile() {
       const response = await fetch('https://authify.test/api/v1/profile', {
         method: 'GET',
@@ -52,7 +50,6 @@
       }
     }
 
-    // Call the function to load the profile on page load
     loadProfile();
   </script>
 </body>
