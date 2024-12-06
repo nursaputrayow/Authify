@@ -41,3 +41,7 @@ Route::get('/update-profile', function () {
 Route::get('/403', function () {
     return response()->view('errors.403', [], 403);
 })->name('403');
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
