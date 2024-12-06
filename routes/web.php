@@ -37,3 +37,7 @@ Route::get('/profile', function () {
 Route::get('/update-profile', function () {
     return view('update-profile');
 });
+
+Route::get('/403', function () {
+    return response()->view('errors.403', [], 403);
+})->name('403');
