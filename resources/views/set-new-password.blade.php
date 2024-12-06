@@ -10,7 +10,6 @@
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Set a New Password</h2>
 
-    <!-- Display Error or Success Message -->
     <div id="message" class="mb-4 hidden p-4 rounded-lg text-center"></div>
 
     <form id="resetPasswordForm" class="space-y-4">
@@ -45,7 +44,7 @@
       event.preventDefault();
 
       const messageDiv = document.getElementById('message');
-      messageDiv.classList.add('hidden'); // Hide previous messages
+      messageDiv.classList.add('hidden');
 
       const data = {
         phone: document.getElementById('phone').value,
@@ -67,18 +66,15 @@
         const result = await response.json();
 
         if (response.status === 200) {
-          // Success message
           messageDiv.textContent = 'Your password has been successfully updated!';
           messageDiv.className = 'p-4 mb-4 bg-green-100 text-green-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         } else {
-          // Validation errors
           messageDiv.textContent = `Error: ${result.message || 'Something went wrong.'}`;
           messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
           messageDiv.classList.remove('hidden');
         }
       } catch (error) {
-        // Network or unexpected errors
         messageDiv.textContent = 'Error: Unable to connect to the server.';
         messageDiv.className = 'p-4 mb-4 bg-red-100 text-red-800 rounded-lg text-center';
         messageDiv.classList.remove('hidden');
