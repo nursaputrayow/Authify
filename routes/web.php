@@ -45,3 +45,7 @@ Route::get('/403', function () {
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
+
+Route::get('/401', function () {
+    return response()->view('errors.401', [], 401);
+})->name('401');
