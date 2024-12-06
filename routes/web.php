@@ -49,3 +49,7 @@ Route::fallback(function () {
 Route::get('/401', function () {
     return response()->view('errors.401', [], 401);
 })->name('401');
+
+Route::get('/500', function () {
+    return response()->view('errors.500', [], 500);
+})->name('500');
