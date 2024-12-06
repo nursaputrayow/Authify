@@ -29,7 +29,6 @@
     document.getElementById('verifyForm').addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      // Clear previous error messages
       const errorFields = ['phone', 'code'];
       errorFields.forEach(field => {
         const errorElement = document.getElementById(`${field}Error`);
@@ -40,7 +39,7 @@
       });
 
       const messageDiv = document.getElementById('message');
-      messageDiv.classList.add('hidden'); // Hide global message box before processing
+      messageDiv.classList.add('hidden');
 
       const data = {
         phone: document.getElementById('phone').value,
