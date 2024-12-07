@@ -73,3 +73,7 @@ Route::get('/418', function () {
 Route::get('/400', function () {
     return response()->view('errors.400', [], 400);
 })->name('400');
+
+Route::get('/402', function () {
+    return response()->view('errors.402', [], 402);
+})->name('402');
