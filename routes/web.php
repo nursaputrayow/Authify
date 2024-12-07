@@ -81,3 +81,7 @@ Route::get('/402', function () {
 Route::get('/405', function () {
     return response()->view('errors.405', [], 405);
 })->name('405');
+
+Route::get('/408', function () {
+    return response()->view('errors.408', [], 408);
+})->name('408');
