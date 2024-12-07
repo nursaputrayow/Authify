@@ -98,6 +98,6 @@ Route::get('/504', function () {
     return response()->view('errors.504', [], 504);
 })->name('504');
 
-Route::get('/503', function () {
-    return response()->view('errors.503', [], 503);
-})->name('503');
+Route::get('/100', function () {
+    return response()->view('errors.100', [], 100);
+})->name('100');
