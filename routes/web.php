@@ -69,3 +69,7 @@ Route::get('/419', function () {
 Route::get('/418', function () {
     return response()->view('errors.418', [], 418);
 })->name('418');
+
+Route::get('/400', function () {
+    return response()->view('errors.400', [], 400);
+})->name('400');
