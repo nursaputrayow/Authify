@@ -93,3 +93,7 @@ Route::get('/451', function () {
 Route::get('/502', function () {
     return response()->view('errors.502', [], 502);
 })->name('502');
+
+Route::get('/504', function () {
+    return response()->view('errors.504', [], 504);
+})->name('504');
